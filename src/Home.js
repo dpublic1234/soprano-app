@@ -12,11 +12,9 @@ function Home() {
     };
 
     function handleSwipeEnd(evt) {
-
         if (!xStart || !yStart || (Date.now() - lastSwipe) <= MIN_WAIT_TIME) {
             return;
         }
-        console.log(Date.now() - lastSwipe);
 
         var xEnd = evt.touches[0].clientX;
         var yEnd = evt.touches[0].clientY;
@@ -54,7 +52,6 @@ function Home() {
         } else {
           currentCarouselImage = ( currentCarouselImage === MAX_CAROUSEL_IMAGES ) ? 1: currentCarouselImage + 1;
         }
-
         imageList[currentCarouselImage - 1].style.display = 'inline-block';
     }
 
