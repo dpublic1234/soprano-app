@@ -32,7 +32,6 @@ function Home() {
 
         xStart = null;
         yStart = null;
-        console.log("saving last swipe");
         lastSwipe = Date.now();
     }
 
