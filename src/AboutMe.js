@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 
 function AboutMe() {
 
@@ -6,7 +7,7 @@ function AboutMe() {
     function setCarouselImage(move) {
         let imageList = document.getElementsByClassName("carousel-image-container");
 
-        Array.prototype.forEach.call(imageList, function(element) {
+        Array.prototype.forEach.call(imageList, function (element) {
             element.style.display = 'none';
         });
 
@@ -35,7 +36,7 @@ function AboutMe() {
 
     function getCarouselSet(id, imgSrc, title, description) {
         return (
-            <div key={"carousel-image-"+id} id={"carousel-image-"+id} className="carousel-image-container">
+            <div key={"carousel-image-" + id} id={"carousel-image-" + id} className="carousel-image-container">
                 <p className="carousel-title">{title}</p>
                 <img src={imgSrc} alt={title} width="100%" />
                 <p className="carousel-description">{description}</p>
@@ -43,8 +44,18 @@ function AboutMe() {
         );
     }
 
-    const MATRIX_SIZE = 3;
-    const matrixArray = Array.from(Array(MATRIX_SIZE).keys());
+    let defaultMatrixSize = 2;
+    let [ matrixArray, setMatrixArray ] = useState(Array.from(Array(defaultMatrixSize).keys()));
+
+    function reloadTable() {
+        let size = parseInt(document.getElementById("table-size").value);
+        if (size < 2 || size > 10) {
+            alert("Size must be between 2 and 10");
+            return;
+        }
+
+        setMatrixArray(Array.from(Array(size).keys()));
+    }
 
     return (
         <>
@@ -65,25 +76,27 @@ function AboutMe() {
             <div id="aboutme-carousel">
                 <span className="carousel-arrow" onClick={() => setCarouselImage("back")}>&lt;</span>
                 {
-                    carouselDataJson.map((obj, id)=> {
+                    carouselDataJson.map((obj, id) => {
                         return getCarouselSet(id, obj.imgsrc, obj.title, obj.description);
                     })
                 }
                 <span className="carousel-arrow" onClick={() => setCarouselImage("front")}>&gt;</span>
             </div>
+            <input id="table-size" type="number" min="2" max="10"/>
+            <button id="table-reload" onClick={reloadTable}>Reload</button>
             <table>
-        <tbody>
-          {matrixArray.map((rowVal, i) => {
-            return (
-              <tr key={"row" + i}>
-                {matrixArray.map((cellVal, j) => {
-                  let value = j*MATRIX_SIZE + (i+1);
-                  return (<td key={"cell-"+i+j} >{value}</td>);
-                })}
-              </tr>)
-          })}
-        </tbody>
-      </table>
+                <tbody>
+                    {matrixArray.map((rowVal, i) => {
+                        return (
+                            <tr key={"row" + i}>
+                                {matrixArray.map((cellVal, j) => {
+                                    let value = j * matrixArray.length + (i + 1);
+                                    return (<td key={"cell-" + i + j} >{value}</td>);
+                                })}
+                            </tr>)
+                    })}
+                </tbody>
+            </table>
         </>
     );
 }
