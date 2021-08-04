@@ -2,7 +2,7 @@ import './App.css';
 
 function AboutMe() {
 
-    var currentCarouselImage = 1;
+    var currentCarouselImage = 0;
     function setCarouselImage(move) {
         let imageList = document.getElementsByClassName("carousel-image-container");
 
