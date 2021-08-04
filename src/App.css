@@ -283,6 +283,38 @@ hr {
   padding-left: 4%;
 }
 
+#aboutme-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image-container {
+  display: none;
+}
+
+.carousel-title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 57px;
+}
+
+.carousel-description {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: -70px;
+}
+
+#carousel-image-1 {
+  display: inline-block;
+}
+
+.carousel-arrow {
+  padding: 20px;
+}
+
 @media (max-width: 1000px) {
   #newsletter {
     padding: 10px 20px;
