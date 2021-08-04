@@ -90,7 +90,13 @@ function AboutMe() {
                         return (
                             <tr key={"row" + i}>
                                 {matrixArray.map((cellVal, j) => {
-                                    let value = j * matrixArray.length + (i + 1);
+                                    let value = 0;
+                                    if (j%2 === 0) {
+                                      value = (j * matrixArray.length) + (i + 1);
+                                    } else {
+                                      value = (j * matrixArray.length) - (i + 1) + (matrixArray.length +1);
+                                    }
+                                    
                                     return (<td key={"cell-" + i + j} >{value}</td>);
                                 })}
                             </tr>)
