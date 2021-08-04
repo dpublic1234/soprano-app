@@ -42,6 +42,10 @@ function AboutMe() {
             </div>
         );
     }
+
+    const MATRIX_SIZE = 3;
+    const matrixArray = Array.from(Array(MATRIX_SIZE).keys());
+
     return (
         <>
             <div id="aboutme">
@@ -67,6 +71,19 @@ function AboutMe() {
                 }
                 <span className="carousel-arrow" onClick={() => setCarouselImage("front")}>&gt;</span>
             </div>
+            <table>
+        <tbody>
+          {matrixArray.map((rowVal, i) => {
+            return (
+              <tr key={"row" + i}>
+                {matrixArray.map((cellVal, j) => {
+                  let value = j*MATRIX_SIZE + (i+1);
+                  return (<td key={"cell-"+i+j} >{value}</td>);
+                })}
+              </tr>)
+          })}
+        </tbody>
+      </table>
         </>
     );
 }
