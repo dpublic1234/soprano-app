@@ -22,6 +22,19 @@ nav {
   justify-content: center;
 }
 
+table {
+  display: flex;
+  border-collapse: collapse;
+  padding: 20px;
+}
+
+td {
+  border: solid 1px;
+  box-sizing: border-box;
+  font-size: calc(5px + 2vmin);
+  padding: 14px;
+}
+
 nav > a {
   position: relative;
   display: inline-block;
@@ -261,6 +274,7 @@ hr {
   justify-content: center;
   align-items: flex-start;
   padding: 80px 80px;
+  padding-bottom: 20px;
 }
 
 #aboutme > div{
